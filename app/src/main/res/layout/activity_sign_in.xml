@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Sign_in">
+    <ImageView
+        android:id="@+id/img_login_title"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/user"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp" />
+
+    <RelativeLayout
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_login_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/cornerbox"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Sign in"
+            android:textColor="#4957AA"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_input_email"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/textinput"
+                android:hint="email" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_email"
+            android:layout_marginTop="5dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/textinput"
+                android:hint="password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_input_password"
+            android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/Eron_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FF1100"/>
+            <Button
+                android:id="@+id/signinbnt"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="15dp"
+                android:backgroundTint="#4CAF50"
+                android:layout_below="@+id/Eron_view"
+                android:text="Sign in" />
+
+            <Button
+                android:id="@+id/signupbnt"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="15dp"
+                android:backgroundTint="#2A3476"
+                android:layout_below="@+id/Eron_view"
+                android:text="Sign up" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
