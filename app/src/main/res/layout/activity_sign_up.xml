@@ -13,7 +13,7 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:src="@drawable/user" />
+        android:src="@drawable/baseline_account" />
 
     <RelativeLayout
         android:layout_width="331dp"
@@ -33,26 +33,11 @@
             android:textColor="#4957AA"
             android:textSize="30dp"
             android:textStyle="bold" />
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:layout_marginTop="5dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_input_name"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/textinput"
-                android:hint="name" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/input_name"
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText

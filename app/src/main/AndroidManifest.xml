@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Onlin_shop"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".Sign_up"
             android:exported="false" />
         <activity
