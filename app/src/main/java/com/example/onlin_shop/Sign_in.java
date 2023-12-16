@@ -39,6 +39,7 @@ public class Sign_in extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Sign_up.class));
+                finishAffinity();
             }
         });
         signinbnt.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +67,7 @@ public class Sign_in extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Toast.makeText(Sign_in.this,"sign in accout", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            finishAffinity();
                         }else {
                             Toast.makeText(Sign_in.this,"sign in failed", Toast.LENGTH_SHORT).show();
                         }

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,11 +16,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class Sign_up extends AppCompatActivity {
-    TextInputEditText textInputEditEmail, textInputEditPassword,textInputRepassword;
+    TextInputEditText  textInputName,textInputEditEmail, textInputEditPassword;
     Button signupbnt;
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class Sign_up extends AppCompatActivity {
 
         textInputEditEmail = findViewById(R.id.txt_input_email);
         textInputEditPassword = findViewById(R.id.input_password);
-        textInputRepassword = findViewById(R.id.input_re_password);
+        textInputName = findViewById(R.id.txt_input_name);
         signupbnt = findViewById(R.id.signupbnt);
 
         signupbnt.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +42,6 @@ public class Sign_up extends AppCompatActivity {
             public void onClick(View v) {
                 String email = String.valueOf(textInputEditEmail.getText());
                 String password = String.valueOf(textInputEditPassword.getText());
-                String repassword = String.valueOf(textInputRepassword.getText());
 
                 if (TextUtils.isEmpty(email)){
                     textInputEditEmail.setError("Email is required.");
@@ -54,16 +55,34 @@ public class Sign_up extends AppCompatActivity {
                     textInputEditPassword.setError("Password must be > 6 charater.");
                     return;
                 }
-                if (password == repassword){
-                    textInputEditPassword.setError("repassword must be same password.");
-                    return;
-                }
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(Sign_up.this, "User created",Toast.LENGTH_SHORT);
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            // add tên người dùng
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(String.valueOf(textInputName.getText()))
+                                    .build();
+
+                            user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(Sign_up.this, "User created",Toast.LENGTH_SHORT);
+                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                        finishAffinity();
+                                    }else{
+
+                                        Toast.makeText(Sign_up.this, "User created faise",Toast.LENGTH_SHORT);
+                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                        finishAffinity();
+                                    }
+                                }
+                            });
+
+
                         }else {
                             Toast.makeText(Sign_up.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                         }
