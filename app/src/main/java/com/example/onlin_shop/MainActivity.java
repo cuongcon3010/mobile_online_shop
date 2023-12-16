@@ -1,6 +1,7 @@
 package com.example.onlin_shop;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser user;
     EditText search;
+    ImageFilterButton avata;
 
     ImageButton logoutbnt;
 
@@ -29,8 +31,17 @@ public class MainActivity extends AppCompatActivity {
 
         logoutbnt = findViewById(R.id.logoutbnt);
         search = findViewById(R.id.search_box);
+        avata = findViewById(R.id.avata);
 
         search.setText(String.valueOf(user.getDisplayName()));
+
+        avata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), EditAcount.class));
+                finishAffinity();
+            }
+        });
 
         logoutbnt.setOnClickListener(new View.OnClickListener() {
             @Override

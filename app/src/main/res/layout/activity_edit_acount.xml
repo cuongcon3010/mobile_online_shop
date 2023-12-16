@@ -5,20 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Sign_up">
-
-    <ImageView
-        android:id="@+id/img_login_title"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/baseline_account" />
-
+    tools:context=".EditAcount">
     <RelativeLayout
         android:layout_width="331dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img_login_title"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="62dp"
         android:background="@drawable/cornerbox"
@@ -29,24 +20,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Sign up"
+            android:text="Edit account"
             android:textColor="#4957AA"
             android:textSize="30dp"
             android:textStyle="bold" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/khung"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/title"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="100dp">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterButton
+                android:id="@+id/avata"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/user"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </androidx.cardview.widget.CardView>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
+            android:layout_below="@+id/khung"
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_input_email"
+                android:id="@+id/txt_input_SDT"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:background="@drawable/textinput"
-                android:hint="email" />
+                android:hint="phone number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -65,14 +73,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txt_input_password"
+            android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/input_name"
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_password"
+                android:id="@+id/txt_input_password"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:background="@drawable/textinput"
@@ -82,17 +90,16 @@
 
 
         <Button
-            android:id="@+id/signupbnt"
+            android:id="@+id/edit_account"
             android:layout_width="200dp"
             android:layout_height="45dp"
-            android:layout_below="@id/txt_input_password"
+            android:layout_below="@id/input_password"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:layout_marginRight="15dp"
             android:backgroundTint="#2A3476"
-            android:text="Sign up"
+            android:text="complete"
             tools:ignore="TouchTargetSizeCheck" />
 
     </RelativeLayout>
-
 </RelativeLayout>

@@ -18,12 +18,13 @@
             app:cardCornerRadius="50dp"
             android:background="@drawable/titlebar"
             android:layout_centerVertical="true">
-            <ImageView
+            <androidx.constraintlayout.utils.widget.ImageFilterButton
+                android:id="@+id/avata"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/user"
-                android:scaleType="fitCenter"
-                android:layout_gravity="center"/>
+                android:scaleType="centerCrop"
+                android:layout_gravity="center" />
 
         </androidx.cardview.widget.CardView>
 
@@ -65,12 +66,11 @@
     </RelativeLayout>
 
     <GridView
-
         android:id="@+id/item_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/titlebar"
-        />
+        android:numColumns="2"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
