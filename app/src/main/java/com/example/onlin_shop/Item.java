@@ -1,16 +1,26 @@
 package com.example.onlin_shop;
 
 public class Item {
-    private String name_item;
-    private String nguoi_ban;
-    private double gia;
-    private String thong_tin;
+    String name_item;
+    String nguoi_ban;
+    String gia;
+    String thong_tin;
+    String url;
 
-    public Item(String name_item, String nguoi_ban, double gia, String thong_tin) {
+    public Item(String name_item, String nguoi_ban, String gia, String thong_tin, String url) {
         this.name_item = name_item;
         this.nguoi_ban = nguoi_ban;
         this.gia = gia;
         this.thong_tin = thong_tin;
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getName_item() {
@@ -29,11 +39,11 @@ public class Item {
         this.nguoi_ban = nguoi_ban;
     }
 
-    public double getGia() {
+    public String getGia() {
         return gia;
     }
 
-    public void setGia(double gia) {
+    public void setGia(String gia) {
         this.gia = gia;
     }
 
@@ -45,3 +55,4 @@ public class Item {
         this.thong_tin = thong_tin;
     }
 }
+

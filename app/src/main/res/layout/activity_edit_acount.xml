@@ -50,11 +50,11 @@
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_input_SDT"
+                android:id="@+id/txt_input_Name"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:background="@drawable/textinput"
-                android:hint="phone number" />
+                android:hint="Name" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -65,11 +65,11 @@
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_input_name"
+                android:id="@+id/txt_input_SDT"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:background="@drawable/textinput"
-                android:hint="name" />
+                android:hint="Phone number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -80,12 +80,11 @@
             android:layout_marginTop="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txt_input_password"
+                android:id="@+id/txt_input_address"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:background="@drawable/textinput"
-                android:inputType="textPassword"
-                android:hint="password" />
+                android:hint="Address" />
         </com.google.android.material.textfield.TextInputLayout>
 
 

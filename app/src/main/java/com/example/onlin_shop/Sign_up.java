@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class Sign_up extends AppCompatActivity {
-    TextInputEditText  textInputName,textInputEditEmail, textInputEditPassword;
+    TextInputEditText  textInputEditEmail, textInputEditPassword;
     Button signupbnt;
     FirebaseAuth mAuth;
 
@@ -34,7 +34,6 @@ public class Sign_up extends AppCompatActivity {
 
         textInputEditEmail = findViewById(R.id.txt_input_email);
         textInputEditPassword = findViewById(R.id.input_password);
-        textInputName = findViewById(R.id.txt_input_name);
         signupbnt = findViewById(R.id.signupbnt);
 
         signupbnt.setOnClickListener(new View.OnClickListener() {
@@ -62,27 +61,22 @@ public class Sign_up extends AppCompatActivity {
                             // add tên người dùng
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(String.valueOf(textInputName.getText()))
-                                    .build();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().build();
 
                             user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
                                         Toast.makeText(Sign_up.this, "User created",Toast.LENGTH_SHORT);
-                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                        startActivity(new Intent(getApplicationContext(),EditAcount.class));
                                         finishAffinity();
                                     }else{
 
                                         Toast.makeText(Sign_up.this, "User created faise",Toast.LENGTH_SHORT);
-                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                                        finishAffinity();
+                                        return;
                                     }
                                 }
                             });
-
-
                         }else {
                             Toast.makeText(Sign_up.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                         }

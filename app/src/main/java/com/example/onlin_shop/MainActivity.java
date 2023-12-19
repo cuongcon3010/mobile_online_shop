@@ -6,19 +6,21 @@ import androidx.constraintlayout.utils.widget.ImageFilterButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser user;
     EditText search;
     ImageFilterButton avata;
-
+    GridView gridView;
     ImageButton logoutbnt;
 
     @Override
@@ -32,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         logoutbnt = findViewById(R.id.logoutbnt);
         search = findViewById(R.id.search_box);
         avata = findViewById(R.id.avata);
+        gridView = findViewById(R.id.item_list_view);
 
-        search.setText(String.valueOf(user.getDisplayName()));
 
         avata.setOnClickListener(new View.OnClickListener() {
             @Override

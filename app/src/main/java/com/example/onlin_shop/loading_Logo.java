@@ -21,7 +21,7 @@ public class loading_Logo extends AppCompatActivity {
             public void run() {
                 nextActivity();
             }
-        },2000);
+        },500);
     }
 
     private void nextActivity() {
