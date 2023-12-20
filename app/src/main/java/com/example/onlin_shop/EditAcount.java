@@ -18,7 +18,9 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -61,13 +63,16 @@ public class EditAcount extends AppCompatActivity {
         Address = findViewById(R.id.txt_input_address);
         complete = findViewById(R.id.edit_account);
 
+        getImage("gs://online-shop-a9b3b.appspot.com/UserAvata");
+
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pushdata();
+                pushIMGfirebase();
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finishAffinity();
-                pushIMGfirebase();
+
             }
         });
         avata.setOnClickListener(new View.OnClickListener() {
@@ -81,47 +86,10 @@ public class EditAcount extends AppCompatActivity {
             }
         });
 
-        DatabaseReference namedb = database.getReference();
-        namedb.child("Users/" + UID + "/Name").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String name = snapshot.getValue(String.class);
-                Name.setText(name);
-            }
+        getdata("Users/" + UID + "/Name",Name);
+        getdata("Users/" + UID + "/STD",SDT);
+        getdata("Users/" + UID + "/address",Address);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        DatabaseReference STDdb = database.getReference();
-        STDdb.child("Users/" + UID + "/STD").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String name = snapshot.getValue(String.class);
-                SDT.setText(name);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        DatabaseReference ADDRESS = database.getReference();
-        ADDRESS.child("Users/" + UID + "/address").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String name = snapshot.getValue(String.class);
-                Address.setText(name);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 
     }
@@ -173,7 +141,7 @@ public class EditAcount extends AppCompatActivity {
             });
     //đẩy ảnh lên firebasestoge
 
-    void pushIMGfirebase(){
+    private void pushIMGfirebase(){
         StorageReference storageReference = storage.getReferenceFromUrl("gs://online-shop-a9b3b.appspot.com").child("UserAvata");
         StorageReference mountainsRef = storageReference.child(UID+".png");
 
@@ -193,6 +161,44 @@ public class EditAcount extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            }
+        });
+    }
+
+    ///////////// load ảnh từ firebase ////////////////
+    private void getImage(String url){
+        StorageReference storageRef = storage.getReferenceFromUrl(url);
+        storageRef.child(UID+".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                loadImageUsingGlide(String.valueOf(uri));
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+    }
+    private void loadImageUsingGlide(String imageUrl) {
+        // Sử dụng Glide để tải và hiển thị ảnh
+        Glide.with(this)
+                .load(imageUrl)
+                .into(avata);
+    }
+
+    // lay dữ liệu sring về
+    private void getdata(String url, TextView showtext){
+        DatabaseReference data = database.getReference();
+        data.child(url).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String name = snapshot.getValue(String.class);
+                showtext.setText(name);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

@@ -21,7 +21,7 @@ public class Sign_in extends AppCompatActivity {
     TextInputEditText textInputEditemail, textInputEditpassword;
     TextView Eronemail,Eronpass;
     Button signinbnt,signupbnt;
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

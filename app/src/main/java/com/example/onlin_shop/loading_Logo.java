@@ -30,10 +30,12 @@ public class loading_Logo extends AppCompatActivity {
             //chua login
             Intent intent = new Intent(this,Sign_in.class);
             startActivity(intent);
+            finishAffinity();
         }else {
             //login roi
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
+            finishAffinity();
         }
     }
 }

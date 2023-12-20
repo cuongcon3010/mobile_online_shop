@@ -34,6 +34,7 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
 
+
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("androidx.appcompat:appcompat:1.6.1")

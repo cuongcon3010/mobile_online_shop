@@ -1,26 +1,30 @@
 package com.example.onlin_shop;
 
+import android.net.Uri;
+
 public class Item {
     String name_item;
     String nguoi_ban;
     String gia;
     String thong_tin;
-    String url;
+    Uri image;
 
-    public Item(String name_item, String nguoi_ban, String gia, String thong_tin, String url) {
+    public Item(){
+
+    }
+
+    public Item(String name_item, String nguoi_ban, String gia, String thong_tin) {
         this.name_item = name_item;
         this.nguoi_ban = nguoi_ban;
         this.gia = gia;
         this.thong_tin = thong_tin;
-        this.url = url;
     }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public Item(String name_item, String nguoi_ban, String gia, String thong_tin, Uri image) {
+        this.name_item = name_item;
+        this.nguoi_ban = nguoi_ban;
+        this.gia = gia;
+        this.thong_tin = thong_tin;
+        this.image = image;
     }
 
     public String getName_item() {
@@ -53,6 +57,14 @@ public class Item {
 
     public void setThong_tin(String thong_tin) {
         this.thong_tin = thong_tin;
+    }
+
+    public Uri getImage() {
+        return image;
+    }
+
+    public void setImage(Uri image) {
+        this.image = image;
     }
 }
 
